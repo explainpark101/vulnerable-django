@@ -6,9 +6,16 @@
 <form method="post" style="display: grid;">
     {% csrf_token %}
     <h3>Command</h3>
-    <input type="text" class="form-control" name="command"/>
+    <input type="text" class="form-control" name="command" value="{{command}}"/>
     <button class="btn btn-primary">실행하기</button>
 </form>
+<hr/>
+<h3>Result</h3>
+<div>
+    {% autoescape off %}
+    {{result}}
+    {% endautoescape %}
+</div>
 
 
 {% endblock content %}
