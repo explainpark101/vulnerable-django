@@ -14,8 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path
+from board import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    # path('', lambda req: redirect("article list"), name="home"),
+    path('', views.articleList, name="article list"),
+    path('detail/<int:article_id>', views.detail, name="article detail"),
+    path('create', views.create, name="article create"),
 ]

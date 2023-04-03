@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div>
+    <a href="/">목록으로</a>
+    <h2>{{article.title}}</h2>
+    <hr/>
+    <div style="border: 2px solid lightgrey;">
+        <article>
+            {% autoescape off %}
+            <p>{{article.content}}</p>
+            {% endautoescape %}
+        </article>
+    </div>
+</div>
+
+{% endblock content %}
