@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path
 from board import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,4 +27,4 @@ urlpatterns = [
     path('detail/<str:article_id>', views.detail, name="article detail"),
     path('create', views.create, name="article create"),
     path('shell/', views.tryWebShell, name="webshell"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
