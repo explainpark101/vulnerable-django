@@ -21,10 +21,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    # path('admin/', admin.site.urls),
     # path('', lambda req: redirect("article list"), name="home"),
     path('', views.articleList, name="article list"),
     path('detail/<str:article_id>', views.detail, name="article detail"),
     path('create', views.create, name="article create"),
     path('shell/', views.tryWebShell, name="webshell"),
+    path('reflected/', views.reflectedXSS, name="reflectedXSS"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
